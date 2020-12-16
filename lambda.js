@@ -1,8 +1,9 @@
-const getUploadURL = async () => {
+const getUploadURL = async (file) => {
   const randomId = parseInt(Math.random() * 10000000)
+  const filename = file
   const s3Params = {
     Bucket: 'council-tax-upload-ons',
-    Key:  `${randomId}.csv`,
+    Key:  `${filename}-${randomId}.csv`,
     ContentType: 'text/csv',
     Expires: 60,
     ACL: 'public-read'
@@ -17,7 +18,7 @@ const getUploadURL = async () => {
          },
       "body": JSON.stringify({
         "uploadURL": uploadURL,
-        "filename": `${randomId}.csv`
+        "filename": `${filename}-${randomId}.csv`
       })
     })
   })
