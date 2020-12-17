@@ -1,6 +1,5 @@
-const getUploadURL = async (file) => {
+const getUploadURL = async () => {
   const randomId = parseInt(Math.random() * 10000000)
-  const filename = file
   const s3Params = {
     Bucket: 'council-tax-upload-ons',
     Key:  `${filename}-${randomId}.csv`,
